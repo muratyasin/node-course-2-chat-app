@@ -5,16 +5,16 @@
   socket.on('connect', function (){
     console.log('Connected to the server');
 
-    socket.emit('createEmail', {
-      to:'jen@ecample.com',
-      text:'Hey it is Murat'
-    });
+    // socket.emit('createEmail', {
+    //   to:'jen@ecample.com',
+    //   text:'Hey it is Murat'
+    // });
 
-    socket.emit('createMessage', {
-      from:'jen@ecample.com',
-      text:'Hey it is Murat',
-      createdAt:324234
-    });
+    // socket.emit('createMessage', {
+    //   from:'jen@ecample.com',
+    //   text:'Hey it is Murat',
+    //   createdAt:324234
+    // });
   });
 
   socket.on('disconnect', function () {

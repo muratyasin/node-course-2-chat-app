@@ -27,11 +27,11 @@ io.on('connection', (socket)=>{
   //   createAt: 123
   // });
 
-  socket.emit('newMessage', {
-    from: 'mike@example.com',
-    text:'What is going on',
-    createAt: 123
-  });
+  // socket.emit('newMessage', {
+  //   from: 'mike@example.com',
+  //   text:'What is going on',
+  //   createAt: 123
+  // });
 
   // socket.on('createEmail', (newEmail)=>{
   //   console.log('createEmail', newEmail);
@@ -39,6 +39,11 @@ io.on('connection', (socket)=>{
 
   socket.on('createMessage', (message)=>{
     console.log('createMessage', message);
+    io.emit('newMessage', { //It sends to message to every user
+      from: message.from,
+      text:message.text,
+      createdAt: new Date().getTime()
+    });
   });
 
 
