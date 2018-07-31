@@ -33,13 +33,26 @@ io.on('connection', (socket)=>{
   //   createAt: 123
   // });
 
-  // socket.on('createEmail', (newEmail)=>{
-  //   console.log('createEmail', newEmail);
-  // });
+  socket.emit('newMessage', { //It sends to message to every user
+    from: 'Admin',
+    text:'Welcome to the chat app',
+    createdAt: new Date().getTime()
+  });
+
+  socket.broadcast.emit('newMessage', { //It sends to message to every user
+    from: 'Admin',
+    text:'A new user has joined',
+    createdAt: new Date().getTime()
+  });
 
   socket.on('createMessage', (message)=>{
     console.log('createMessage', message);
-    io.emit('newMessage', { //It sends to message to every user
+    // io.emit('newMessage', { //It sends to message to every user
+    //   from: message.from,
+    //   text:message.text,
+    //   createdAt: new Date().getTime()
+    // });
+    socket.broadcast.emit('newMessage', { //It sends to message to every user
       from: message.from,
       text:message.text,
       createdAt: new Date().getTime()
